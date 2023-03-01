@@ -12,4 +12,5 @@
     <color name="app_color_primary_dark">#B2212121</color>
     <color name="app_color_accent">#008F24</color>
     <color name="app_light_gray">#C4C4C4</color>
+    <color name="toolbar_color_control_normal">#C4C4C4</color>
 </resources>

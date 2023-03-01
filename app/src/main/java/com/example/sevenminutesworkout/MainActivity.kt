@@ -1,5 +1,6 @@
 package com.example.sevenminutesworkout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -12,7 +13,10 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-    binding.flStart.setOnClickListener {  }
+    binding.flStart.setOnClickListener {
+        intent = Intent(this, ExerciseActivity::class.java)
+        startActivity(intent)
+    }
     }
 
 }
