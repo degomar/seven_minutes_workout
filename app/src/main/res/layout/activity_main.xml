@@ -13,21 +13,34 @@
     <ImageView
         android:id="@+id/my_image_view"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="match_parent"
         android:contentDescription="@string/image"
         android:src="@drawable/workoutimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/my_logo"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/logo7minutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     
     <FrameLayout
         android:id="@+id/fl_start"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/my_logo"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/item_color_accent_border_ripple_background">
 
         <TextView
