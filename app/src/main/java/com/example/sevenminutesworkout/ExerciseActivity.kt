@@ -19,11 +19,20 @@ class ExerciseActivity : AppCompatActivity() {
     var exerciseTimer : CountDownTimer? = null
     var exerciseProgress = 0
 
+    var exerciseList: ArrayList<ExerciseModel>? = null
+    private var currentExercisePosition = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_exercise)
 
         setSupportActionBar(binding.toolbarExercise)
+
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+
+        exerciseList = Constants.defaultExerciseList()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -66,6 +75,7 @@ class ExerciseActivity : AppCompatActivity() {
                 binding?.tvTimer?.text = (10 - restProgress).toString()
             }
             override fun onFinish() {
+                currentExercisePosition++
                 setupExerciseView()
             }
         }.start()
