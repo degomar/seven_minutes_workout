@@ -40,7 +40,7 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        setResetProgressBar()
+        setupRestView()
     }
 
     private fun setupRestView(){
@@ -48,12 +48,17 @@ class ExerciseActivity : AppCompatActivity() {
             restTimer?.cancel()
             restProgress = 0
         }
+
+        setResetProgressBar()
     }
 
     private fun setupExerciseView(){
-        binding?.progressBar?.visibility = View.GONE
-        binding?.tvTitle?.text = "Nome do exercício"
+        binding?.flRestView?.visibility = View.INVISIBLE
+        binding?.tvTitle?.visibility = View.INVISIBLE
+
         binding?.flButtonExercise?.visibility = View.VISIBLE
+        binding?.tvExerciseName?.visibility = View.VISIBLE
+        binding?.imgExercise?.visibility = View.VISIBLE
 
         if (exerciseTimer != null) {
             exerciseTimer?.cancel()
