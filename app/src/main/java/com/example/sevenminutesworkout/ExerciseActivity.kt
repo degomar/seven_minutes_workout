@@ -44,6 +44,14 @@ class ExerciseActivity : AppCompatActivity() {
     }
 
     private fun setupRestView(){
+
+        binding?.flRestView?.visibility = View.VISIBLE
+        binding?.tvTitle?.visibility = View.VISIBLE
+
+        binding?.flButtonExercise?.visibility = View.INVISIBLE
+        binding?.tvExerciseName?.visibility = View.INVISIBLE
+        binding?.imgExercise?.visibility = View.INVISIBLE
+
         if (restTimer != null) {
             restTimer?.cancel()
             restProgress = 0
@@ -64,6 +72,8 @@ class ExerciseActivity : AppCompatActivity() {
             exerciseTimer?.cancel()
             exerciseProgress = 0
         }
+        binding?.imgExercise?.setImageResource(exerciseList!![currentExercisePosition].getimage())
+        binding?.tvExerciseName?.text = exerciseList!![currentExercisePosition].getName()
 
         setExerciseProgressBar()
     }
@@ -98,9 +108,15 @@ class ExerciseActivity : AppCompatActivity() {
             }
             
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity,
-                    "Os 30 segundos se esgotaram, vamos descansar um pouco",
-                    Toast.LENGTH_LONG).show()
+             if (currentExercisePosition < exerciseList?.size!! - 1){
+                 setupRestView()
+             } else {
+                 Toast.makeText(
+                     this@ExerciseActivity,
+                     "Parabéns, você completou os 7 minutos de atividade.",
+                     Toast.LENGTH_LONG
+                 ).show()
+             }
             }
         }.start()
     }
