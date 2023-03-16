@@ -150,6 +150,42 @@
         tools:visibility="visible"
         />
 
+    <TextView
+        android:id="@+id/tv_upcoming_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Próximo exercício"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fl_button_exercise"
+        app:layout_constraintBottom_toTopOf="@id/tv_upcoming_exercise"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/app_light_gray"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_upcoming_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do exercício a seguir"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_upcoming_label"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/app_color_primary_dark"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="5dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
