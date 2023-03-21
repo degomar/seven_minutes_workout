@@ -1,5 +1,7 @@
 package com.example.sevenminutesworkout
 
+import android.media.MediaPlayer
+import android.net.Uri
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +28,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var currentExercisePosition = -1
 
     private var tts: TextToSpeech? = null
+    private var player: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         tts = TextToSpeech(this, this)
 
+
+
         binding.toolbarExercise.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -51,6 +56,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun setupRestView(){
+
+        try {
+            val soundUri = Uri.parse(
+                "com.example.sevenminutesworkout" + R.raw.app_src_main_res_raw_press_start)
+            player = MediaPlayer.create(applicationContext,soundUri)
+            player?.isLooping = false
+            player?.start()
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
 
         binding?.flRestView?.visibility = View.VISIBLE
         binding?.tvTitle?.visibility = View.VISIBLE
@@ -97,6 +112,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     fun setResetProgressBar(){
+
+
 
         binding?.progressBar?.progress = restProgress
 
