@@ -11,6 +11,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.sevenminutesworkout.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,8 +29,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
 
+    var exerciseAdapter : ExerciseStatusAdapter? = null
+
     private var tts: TextToSpeech? = null
     private var player: MediaPlayer? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +58,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         setupRestView()
+        setupExerciseStatusRecyclerView()
+    }
+
+    private fun setupExerciseStatusRecyclerView(){
+
+        binding?.rvExerciseStatus?.layoutManager = LinearLayoutManager(
+            this, LinearLayoutManager.HORIZONTAL, false)
+
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!)
+        binding?.rvExerciseStatus?.adapter = exerciseAdapter
+
     }
 
     private fun setupRestView(){
