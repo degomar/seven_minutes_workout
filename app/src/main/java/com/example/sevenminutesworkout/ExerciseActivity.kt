@@ -2,7 +2,6 @@ package com.example.sevenminutesworkout
 
 import android.media.MediaPlayer
 import android.net.Uri
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -12,11 +11,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.sevenminutesworkout.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.log
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     lateinit var binding: ActivityExerciseBinding
@@ -100,7 +97,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding?.tvUpcomingExercise?.text = exerciseList!![currentExercisePosition +1].getName()
 
-        setResetProgressBar()
+        setRestProgressBar()
     }
 
     private fun setupExerciseView(){
@@ -127,7 +124,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setExerciseProgressBar()
     }
 
-    fun setResetProgressBar(){
+    fun setRestProgressBar(){
 
 
 
@@ -142,6 +139,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             override fun onFinish() {
                 currentExercisePosition++
+                exerciseList!![currentExercisePosition].setIsSelected(true)
+                exerciseAdapter!!.notifyDataSetChanged()
                 setupExerciseView()
             }
         }.start()
@@ -159,6 +158,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             
             override fun onFinish() {
+
+                exerciseList!![currentExercisePosition].setIsSelected(false)
+                exerciseList!![currentExercisePosition].setIsCompleted(true)
+                exerciseAdapter!!.notifyDataSetChanged()
+
              if (currentExercisePosition < exerciseList?.size!! - 1){
                  setupRestView()
              } else {
