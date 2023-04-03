@@ -1,5 +1,6 @@
 package com.example.sevenminutesworkout
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     var exerciseTimer : CountDownTimer? = null
     var exerciseProgress = 0
+    var restSecondsTimer: Long = 10
+    var exerciseSecondsTimer: Long = 30
 
     var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
@@ -130,7 +133,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding?.progressBar?.progress = restProgress
 
-        restTimer = object : CountDownTimer(10000, 1000) {
+        restTimer = object : CountDownTimer(restSecondsTimer * 1000, 1000) {
 
             override fun onTick(p0: Long) {
                 restProgress++
@@ -149,7 +152,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding?.progressBarExercise?.progress = exerciseProgress
 
-        exerciseTimer = object : CountDownTimer(30000, 1000) {
+        exerciseTimer = object : CountDownTimer(exerciseSecondsTimer * 1000, 1000) {
 
             override fun onTick(p0: Long) {
                 exerciseProgress++
@@ -166,11 +169,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
              if (currentExercisePosition < exerciseList?.size!! - 1){
                  setupRestView()
              } else {
-                 Toast.makeText(
-                     this@ExerciseActivity,
-                     "Parabéns, você completou os 7 minutos de atividade.",
-                     Toast.LENGTH_LONG
-                 ).show()
+                 finish()
+                 var intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
+                startActivity(intent)
              }
             }
         }.start()

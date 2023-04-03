@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinishActivity"
+    android:background="@drawable/pexels_cottonbro_studio">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_finish"
+        android:theme="@style/ToolbarTheme"
+        android:background="#2DFFFFFF"
+        app:titleTextColor="@color/app_color_primary"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:subtitleTextColor="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/ll_finish"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bg_finish_linear_layout"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parabéns"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Você conclui a série de exercícios"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            />
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Encerrar"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#4CAF50"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
