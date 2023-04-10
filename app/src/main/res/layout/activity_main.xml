@@ -52,6 +52,24 @@
             android:textStyle="bold"/>
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/fl_bmi"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/item_color_imc_border_ripple_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IMC"
+            android:layout_gravity="center"
+            android:textColor="@color/app_color_primary"
+            android:textSize="@dimen/default_text_size_button"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
