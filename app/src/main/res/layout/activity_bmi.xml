@@ -60,197 +60,228 @@
 
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/tv_cm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rg_units"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="20sp"
-        android:text="cm"
-        android:layout_margin="30dp"
-        android:visibility="visible"
-        tools:visibility="invisible"/>
-
-
-    <TextView
-        android:id="@+id/tv_kg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/til_metric_height"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="20sp"
-        android:text="Kg"
-        android:layout_margin="30dp"
-        android:visibility="visible"
-        tools:visibility="invisible"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_metric_height"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginRight="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/rg_units"
-        app:layout_constraintStart_toEndOf="@+id/tv_cm"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintTextColor="@color/teal_700"
-        app:boxStrokeColor="@color/teal_700"
-        android:visibility="visible"
-        tools:visibility="invisible">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_metric_height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Altura"
-            android:textColorHint="@color/app_color_primary"
-            android:inputType="number"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_metric_weight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginRight="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/til_metric_height"
-        app:layout_constraintStart_toStartOf="@+id/til_metric_height"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintTextColor="@color/purple_500"
-        app:boxStrokeColor="@color/purple_500"
-        android:visibility="visible"
-        tools:visibility="invisible">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tie_metric_weight"
+    <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Peso"
-        android:textColorHint="@color/app_color_primary"
-        android:inputType="number"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tv_feet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rg_units"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="18sp"
-        android:text="feet"
-        android:layout_margin="30dp"
-        android:visibility="invisible"
-        tools:visibility="visible"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_us_metric_height"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginRight="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/rg_units"
-        app:layout_constraintStart_toEndOf="@+id/tv_feet"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintTextColor="@color/teal_700"
-        app:boxStrokeColor="@color/teal_700"
-        android:visibility="invisible"
-        tools:visibility="visible"
-        >
+        app:layout_constraintTop_toBottomOf="@id/rg_units">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_us_metric_height"
+        <LinearLayout
+            android:id="@+id/ll_units"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Feets"
-            android:textColorHint="@color/app_color_primary"
-            android:inputType="number"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:visibility="visible"
+            tools:visibility="invisible"
+            >
+            <LinearLayout
+                android:id="@+id/ll_cm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="cm"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="30dp"
+                    />
 
-    <TextView
-        android:id="@+id/tv_pounds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/til_metric_height"
-        app:layout_constraintStart_toEndOf="@id/til_us_metric_inchs"
-        app:layout_constraintEnd_toStartOf="@id/til_us_metric_weight"
-        android:textSize="14sp"
-        android:text="pounds"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="30dp"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_metric_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginRight="50dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:hintTextColor="@color/teal_700"
+                    app:boxStrokeColor="@color/teal_700">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/eti_metric_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Altura"
+                        android:textColorHint="@color/app_color_primary"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_us_metric_weight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginRight="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/til_us_metric_height"
-        app:layout_constraintStart_toEndOf="@+id/tv_pounds"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintTextColor="@color/purple_500"
-        app:boxStrokeColor="@color/purple_500"
-        android:visibility="invisible"
-        tools:visibility="visible">
+            </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_us_metric_weight"
+            <LinearLayout
+                android:id="@+id/ll_kg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/til_metric_height"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="20sp"
+                    android:text="Kg"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_metric_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginRight="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:hintTextColor="@color/purple_500"
+                    app:boxStrokeColor="@color/purple_500"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/eti_metric_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Peso"
+                        android:textColorHint="@color/app_color_primary"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_us_units"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="pounds"
-            android:textColorHint="@color/app_color_primary"
-            android:inputType="number"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            >
+            <LinearLayout
+                android:id="@+id/ll_feet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_feet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="feet"
+                    android:layout_margin="30dp"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_us_metric_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginRight="50dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:hintTextColor="@color/teal_700"
+                    app:boxStrokeColor="@color/teal_700"
+                    android:layout_weight="1"
+                    >
 
-    <TextView
-        android:id="@+id/tv_inchs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/til_metric_height"
-        app:layout_constraintStart_toStartOf="@id/tv_cm"
-        android:textSize="14sp"
-        android:text="inchs"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="10dp"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/eti_us_metric_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Feets"
+                        android:textColorHint="@color/app_color_primary"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_us_metric_inchs"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/til_metric_height"
-        app:layout_constraintStart_toStartOf="@+id/til_metric_height"
-        app:layout_constraintEnd_toStartOf="@id/tv_pounds"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:hintTextColor="@color/teal_700"
-        app:boxStrokeColor="@color/teal_700"
-        android:visibility="invisible"
-        tools:visibility="visible">
+            <LinearLayout
+                android:id="@+id/ll_pounds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_pounds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="pounds"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="30dp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_metric_inchs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="inchs"
-            android:textColorHint="@color/app_color_primary"
-            android:inputType="number"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_us_metric_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:hintTextColor="@color/purple_500"
+                    app:boxStrokeColor="@color/purple_500"
+                    android:layout_weight="2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/eti_us_metric_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="pounds"
+                        android:textColorHint="@color/app_color_primary"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_inchs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="inchs"
+                    android:layout_weight="0.7"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_us_metric_inchs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginRight="50dp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_pounds"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:hintTextColor="#E91E63"
+                    app:boxStrokeColor="#E91E63"
+                    android:layout_weight="2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/eti_metric_inchs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="inchs"
+                        android:textColorHint="@color/app_color_primary"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 
     <LinearLayout
@@ -258,11 +289,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_metric_weight"
+        app:layout_constraintTop_toBottomOf="@+id/ll_content"
         android:layout_margin="30dp"
         android:orientation="vertical"
         android:visibility="invisible"
-        tools:visibility="visible">
+        tools:visibility="invisible">
 
         <TextView
             android:id="@+id/tv_youribm_text"

@@ -40,8 +40,8 @@ class BmiActivity : AppCompatActivity() {
         binding?.btnCalculate?.setOnClickListener {
 
             if (verifyInputsEmpty()){
-                var heightValue : Float = binding?.tieMetricHeight?.text.toString().toFloat() / 100
-                var weightValue : Float = binding?.tieMetricWeight?.text.toString().toFloat()
+                var heightValue : Float = binding?.etiMetricHeight?.text.toString().toFloat() / 100
+                var weightValue : Float = binding?.etiMetricWeight?.text.toString().toFloat()
 
                 var bmi = weightValue / (heightValue * heightValue)
                 setDisplayBmi(bmi)
@@ -58,8 +58,8 @@ class BmiActivity : AppCompatActivity() {
     private fun verifyInputsEmpty(): Boolean {
         var inputFilled = true
 
-        if (binding?.tieMetricHeight?.text.toString().isEmpty()){ inputFilled = false }
-        else if (binding?.tieMetricWeight?.text.toString().isEmpty()) { inputFilled = false }
+        if (binding?.etiMetricHeight?.text.toString().isEmpty()){ inputFilled = false }
+        else if (binding?.etiMetricWeight?.text.toString().isEmpty()) { inputFilled = false }
         else {
             binding?.btnCalculate?.setBackgroundColor(getResources().getColor(R.color.app_color_accent))
         }
@@ -110,32 +110,19 @@ class BmiActivity : AppCompatActivity() {
     }
 
     private fun makeVisibileUsMetricsView(){
+        binding?.llUnits?.visibility = View.GONE
+        binding?.llUsUnits?.visibility = View.VISIBLE
+        binding?.etiMetricWeight?.text!!.clear()
+        binding?.etiMetricHeight?.text!!.clear()
 
-        binding?.tvFeet?.visibility = View.VISIBLE
-        binding?.tilUsMetricHeight?.visibility = View.VISIBLE
-        binding?.tvInchs?.visibility = View.VISIBLE
-        binding?.tilUsMetricInchs?.visibility = View.VISIBLE
-        binding?.tvPounds?.visibility = View.VISIBLE
-        binding?.tilUsMetricWeight?.visibility = View.VISIBLE
-
-        binding?.tvCm?.visibility = View.INVISIBLE
-        binding?.tilMetricHeight?.visibility = View.INVISIBLE
-        binding?.tilMetricWeight?.visibility = View.INVISIBLE
-        binding?.tvKg?.visibility = View.INVISIBLE
 
     }    private fun makeVisibileMetricsView(){
+        binding?.llUsUnits?.visibility = View.GONE
+        binding?.llUnits?.visibility = View.VISIBLE
+        binding?.etiMetricInchs?.text!!.clear()
+        binding?.etiUsMetricHeight?.text!!.clear()
+        binding?.etiUsMetricWeight?.text!!.clear()
 
-        binding?.tvCm?.visibility = View.VISIBLE
-        binding?.tilMetricHeight?.visibility = View.VISIBLE
-        binding?.tilMetricWeight?.visibility = View.VISIBLE
-        binding?.tvKg?.visibility = View.VISIBLE
-
-        binding?.tvFeet?.visibility = View.INVISIBLE
-        binding?.tilUsMetricHeight?.visibility = View.INVISIBLE
-        binding?.tvInchs?.visibility = View.INVISIBLE
-        binding?.tilUsMetricInchs?.visibility = View.INVISIBLE
-        binding?.tvPounds?.visibility = View.INVISIBLE
-        binding?.tieUsMetricWeight?.visibility = View.INVISIBLE
 
     }
 }
