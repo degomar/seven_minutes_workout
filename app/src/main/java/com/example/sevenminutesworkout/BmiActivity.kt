@@ -25,6 +25,14 @@ class BmiActivity : AppCompatActivity() {
             supportActionBar?.title = "Calculadora IMC"
         }
 
+        binding.rbUsUnits.setOnCheckedChangeListener { buttonView , ischeckedButton ->
+            if (binding.rbUsUnits.isChecked) {
+                makeVisibileUsMetricsView()
+            } else if (binding.rbMetricUnits.isChecked){
+                makeVisibileMetricsView()
+            }
+        }
+
         binding.tbBmi.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -99,5 +107,35 @@ class BmiActivity : AppCompatActivity() {
         binding?.tvResultIbmPorcentText?.text = bmiValue
         binding?.tvResultIbmInfoText?.text = bmiLabel
         binding?.tvResultIbmTips?.text = bmiDescription
+    }
+
+    private fun makeVisibileUsMetricsView(){
+
+        binding?.tvFeet?.visibility = View.VISIBLE
+        binding?.tilUsMetricHeight?.visibility = View.VISIBLE
+        binding?.tvInchs?.visibility = View.VISIBLE
+        binding?.tilUsMetricInchs?.visibility = View.VISIBLE
+        binding?.tvPounds?.visibility = View.VISIBLE
+        binding?.tilUsMetricWeight?.visibility = View.VISIBLE
+
+        binding?.tvCm?.visibility = View.INVISIBLE
+        binding?.tilMetricHeight?.visibility = View.INVISIBLE
+        binding?.tilMetricWeight?.visibility = View.INVISIBLE
+        binding?.tvKg?.visibility = View.INVISIBLE
+
+    }    private fun makeVisibileMetricsView(){
+
+        binding?.tvCm?.visibility = View.VISIBLE
+        binding?.tilMetricHeight?.visibility = View.VISIBLE
+        binding?.tilMetricWeight?.visibility = View.VISIBLE
+        binding?.tvKg?.visibility = View.VISIBLE
+
+        binding?.tvFeet?.visibility = View.INVISIBLE
+        binding?.tilUsMetricHeight?.visibility = View.INVISIBLE
+        binding?.tvInchs?.visibility = View.INVISIBLE
+        binding?.tilUsMetricInchs?.visibility = View.INVISIBLE
+        binding?.tvPounds?.visibility = View.INVISIBLE
+        binding?.tieUsMetricWeight?.visibility = View.INVISIBLE
+
     }
 }
