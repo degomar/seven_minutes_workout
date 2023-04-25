@@ -122,7 +122,7 @@ class BmiActivity : AppCompatActivity() {
               bmiLabel = "Peso normal"
               bmiDescription= "Parabéns, você esta dentro do peso, continue com uma boa dieta e exercícios físicos"
           }
-          bmi in 17.0..18.4 -> {
+          bmi >= 17.0 && bmi < 18.5 -> {
               bmiLabel = "Abaixo do peso"
               bmiDescription= "Ops, você esta abaixo do peso, fique atento com a desnutrição e se alimente regularmente com uma dieta saudável"
           }
