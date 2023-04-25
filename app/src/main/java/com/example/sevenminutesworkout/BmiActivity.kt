@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.sevenminutesworkout.databinding.ActivityBmiBinding
 import java.math.BigDecimal
 import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class BmiActivity : AppCompatActivity() {
     lateinit var binding : ActivityBmiBinding
@@ -42,13 +43,17 @@ class BmiActivity : AppCompatActivity() {
         }
 
         binding?.btnCalculate?.setOnClickListener {
+            val df= DecimalFormat("#.##")
+
 
             if (verifyInputsEmpty()){
                 var heightValue : Float = binding?.etiMetricHeight?.text.toString().toFloat() / 100
                 var weightValue : Float = binding?.etiMetricWeight?.text.toString().toFloat()
 
                 var bmi = weightValue / (heightValue * heightValue)
-                setDisplayBmi(bmi)
+
+                val valueBmi = df.format(bmi).toFloat()
+                setDisplayBmi(valueBmi)
             }
             else {
                 if (verifyUsInputsEmpty()){
@@ -62,7 +67,9 @@ class BmiActivity : AppCompatActivity() {
                     val usHeightValue =
                         usHeightValueFeet.toFloat() + usHeightValueInch.toFloat() * 12
                     val bmi = 703 * (usWeightValuePounds / (usHeightValue * usHeightValue))
-                    setDisplayBmi(bmi)
+
+                    val valueBmi = df.format(bmi).toFloat()
+                    setDisplayBmi(valueBmi)
 
                 }
                 Toast.makeText(
@@ -122,7 +129,7 @@ class BmiActivity : AppCompatActivity() {
               bmiLabel = "Peso normal"
               bmiDescription= "Parabéns, você esta dentro do peso, continue com uma boa dieta e exercícios físicos"
           }
-          bmi >= 17.0 && bmi < 18.5 -> {
+          bmi in 17.0.. 18.4 -> {
               bmiLabel = "Abaixo do peso"
               bmiDescription= "Ops, você esta abaixo do peso, fique atento com a desnutrição e se alimente regularmente com uma dieta saudável"
           }
