@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.sevenminutesworkout.databinding.ActivityBmiBinding
 import java.math.BigDecimal
@@ -26,6 +27,9 @@ class BmiActivity : AppCompatActivity() {
         }
 
         binding.rbUsUnits.setOnCheckedChangeListener { buttonView , ischeckedButton ->
+            if (binding?.llInfos?.isVisible == true){
+                binding?.llInfos?.visibility = View.GONE
+            }
             if (binding.rbUsUnits.isChecked) {
                 makeVisibileUsMetricsView()
             } else if (binding.rbMetricUnits.isChecked){
@@ -47,6 +51,20 @@ class BmiActivity : AppCompatActivity() {
                 setDisplayBmi(bmi)
             }
             else {
+                if (verifyUsInputsEmpty()){
+                    val usHeightValueInch: String =
+                        binding?.etiMetricInchs?.text.toString()
+                    val usHeightValueFeet: String =
+                    binding?.etiUsMetricHeight?.text.toString()
+                    val usWeightValuePounds: Float =
+                    binding?.etiUsMetricWeight?.text.toString().toFloat()
+
+                    val usHeightValue =
+                        usHeightValueFeet.toFloat() + usHeightValueInch.toFloat() * 12
+                    val bmi = 703 * (usWeightValuePounds / (usHeightValue * usHeightValue))
+                    setDisplayBmi(bmi)
+
+                }
                 Toast.makeText(
                     this, "Por favor preencha os campos para o calculo",
                     Toast.LENGTH_LONG
@@ -58,8 +76,21 @@ class BmiActivity : AppCompatActivity() {
     private fun verifyInputsEmpty(): Boolean {
         var inputFilled = true
 
+
         if (binding?.etiMetricHeight?.text.toString().isEmpty()){ inputFilled = false }
         else if (binding?.etiMetricWeight?.text.toString().isEmpty()) { inputFilled = false }
+        else {
+            binding?.btnCalculate?.setBackgroundColor(getResources().getColor(R.color.app_color_accent))
+        }
+        return  inputFilled
+    }
+
+    private fun verifyUsInputsEmpty(): Boolean {
+        var inputFilled = true
+
+        if (binding?.etiUsMetricHeight?.text.toString().isEmpty()){ inputFilled = false }
+        else if (binding?.etiUsMetricWeight?.text.toString().isEmpty()) { inputFilled = false }
+        else if (binding?.etiMetricInchs?.text.toString().isEmpty()) { inputFilled = false }
         else {
             binding?.btnCalculate?.setBackgroundColor(getResources().getColor(R.color.app_color_accent))
         }
