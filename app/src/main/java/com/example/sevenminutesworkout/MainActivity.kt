@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
             intent = Intent(this, BmiActivity::class.java)
             startActivity(intent)
         }
+
+        binding.flHistory.setOnClickListener {
+            intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }

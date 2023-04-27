@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/app_light_gray">
 
     <item android:id="@+id/mask">
@@ -8,6 +9,6 @@
         </shape>
     </item>
 
-    <item android:drawable="@drawable/item_circular_color_imc_border"></item>
+    <item android:drawable="@drawable/item_circular_color_hisotry_border"></item>
 
 </ripple>
